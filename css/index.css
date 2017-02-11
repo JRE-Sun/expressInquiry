@@ -1,7 +1,9 @@
 * {
-  font: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif; }
+  font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft Yahei", "Heiti SC", "WenQuanYi Micro Hei", sans-serif; }
 
+html,
 body {
+  height: 100%;
   background-color: #E9E9E9;
   font-weight: normal !important; }
 
@@ -18,15 +20,21 @@ li {
   float: left;
   list-style: none; }
 
+.container {
+  height: 100%;
+  padding: 0px; }
+
 .content {
   width: auto;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  margin: 0 auto;
+  height: 100%;
   background-color: white;
+  margin: 0px;
   padding: 0px; }
   .content h1 {
+    margin: 0;
     display: block;
-    padding-top: 20px;
+    padding-top: 40px;
     text-align: center;
     color: #3c9;
     font-weight: normal; }
@@ -48,8 +56,8 @@ li {
         text-indent: 1em;
         font-size: 18px; }
       .content .row .company .fa-times {
-        top: 10px;
-        right: 100px;
+        top: 6px;
+        right: 90px;
         color: #3c9;
         position: absolute;
         cursor: pointer; }
@@ -96,7 +104,7 @@ li {
         background: #F9F9F9;
         width: calc(100% - 60px);
         margin: 0 30px;
-        height: 400px;
+        height: 300px;
         position: absolute;
         z-index: 9999;
         overflow-y: auto;
@@ -105,8 +113,8 @@ li {
         .content .row .company .box li {
           background-color: #F1F1F1;
           margin: 0 3px 5px 0;
-          padding: 5px;
-          font-size: 13px;
+          padding: 8px;
+          font-size: 16px;
           cursor: pointer; }
           .content .row .company .box li:hover {
             background-color: #3c9; }
@@ -132,8 +140,25 @@ li {
       color: black;
       font-size: 18px; }
 
+@media (min-width: 768px) {
+  .content {
+    width: auto;
+    margin: 0 auto;
+    height: auto;
+    margin-top: 20px;
+    padding: 15px; }
+
+  .content h1 {
+    padding-top: 20px; } }
 @media (min-width: 992px) {
   .content {
-    width: 960px; } }
+    width: 960px;
+    margin: 0 auto;
+    height: auto;
+    margin-top: 20px;
+    padding: 15px; }
+
+  .content h1 {
+    padding-top: 20px; } }
 
 /*# sourceMappingURL=index.css.map */
