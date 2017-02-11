@@ -9,6 +9,44 @@ $(function() {
     var app = "";
     var a = ["s"];
 
+    var company = new Vue({
+        el: '#company',
+        data: {
+            items: []
+        },
+        methods: {
+            loadMore: function(moreData) {
+                this.items.push(moreData);
+            },
+            toggle: function(index) {
+                // console.info(index);
+                companyName.value = this.items[index].expName;
+                data[0] = this.items[index].simpleName;
+                data[3] = this.items[index].expName;
+            }
+        }
+    });
+
+    $.ajax({
+        url: "https://route.showapi.com/64-20?maxSize=100000&showapi_appid=31610&showapi_sign=794da37ef6d548bdb3faf07de393bc6d",
+        type: "get",
+        dataType: "json",
+        success: function(json) {
+            console.log(json.showapi_res_body.expressList);
+
+            // app.changeFlag(json.showapi_res_body.flag);
+            // if (json.showapi_res_body.flag) {
+            for (var i = 0; i < json.showapi_res_body.expressList.length; i++) {
+                company.loadMore(json.showapi_res_body.expressList[i]);
+                // console.log("1");
+            }
+            //     var myjson = { "key": data[0], "id": data[1], "name": data[3] };
+            //     records.loadMore(myjson);
+            // }
+        }
+    });
+
+
     function IsPC() {
         var userAgentInfo = navigator.userAgent;
         var Agents = ["Android", "iPhone",
@@ -23,6 +61,13 @@ $(function() {
             }
         }
         return flag;
+    }
+
+    if (!IsPC()) {
+        $(".container").on("click", ".name", function() {
+            $(".record-div").hide();
+            $(".box").hide();
+        });
     }
 
 
@@ -66,27 +111,10 @@ $(function() {
     });
 
     $(".ul-all li").click(function() {
-        // alert();
-        // alert($(this).attr("key"));
-        // alert();
-        data[0] = $(this).attr("key");
-        data[3] = $(this)[0].innerHTML;
-        // alert(data[3]);
-        // alert(data[0]);
-        companyName.value = $(this)[0].innerHTML;
         $(".box").toggle();
     });
 
-    document.addEventListener('touchend', function(event) {
-        // 如果这个元素的位置内只有一个手指的话
-        if (event.targetTouches.length == 1) {　　　　
-            event.preventDefault(); // 阻止浏览器默认事件，重要 
-            // alert();
-            $(".record-div").hide();
-            $(".box").hide();
-            // e.stopPropagation();
-        }
-    }, false);
+
 
 
 
