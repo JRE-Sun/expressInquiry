@@ -1,0 +1,175 @@
+    * {
+        font: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+    }
+    
+    body {
+        background-color: #E9E9E9;
+        font-weight: normal!important;
+    }
+    
+    ul,
+    li {
+        padding: 0;
+        margin: 0px;
+        overflow: hidden;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    li {
+        float: left;
+        list-style: none;
+    }
+    
+    .content {
+        width: auto;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        margin: 0 auto;
+        background-color: white;
+        // height: 800px;
+        padding: 0px;
+        // margin-top: 10px;
+        h1 {
+            display: block;
+            padding-top: 20px;
+            text-align: center;
+            color: #3c9;
+            font-weight: normal;
+        }
+        .row {
+            margin: 0px;
+            margin-top: 15px;
+            .company {
+                height: 50px;
+                padding: 0px;
+                position: relative;
+                margin-top: 20px;
+                .company-text {
+                    outline: medium;
+                    width: calc(100% - 60px);
+                    height: 50px;
+                    margin: 0 30px;
+                    border: 1px solid #cccccc;
+                    // cursor: pointer;
+                    letter-spacing: 1px;
+                    text-indent: 1em;
+                    font-size: 18px;
+                }
+                .fa-times {
+                    top: 10px;
+                    right: 100px;
+                    color: #3c9;
+                    position: absolute;
+                    cursor: pointer;
+                }
+                .company-icon {
+                    background-color: #3c9;
+                    height: 50px;
+                    width: 50px;
+                    text-align: center;
+                    line-height: 50px;
+                    position: absolute;
+                    right: 30px;
+                    top: 0px;
+                    cursor: pointer;
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                    .fa {
+                        color: white;
+                        text-align: center;
+                        line-height: 50px;
+                    }
+                }
+                .record-div {
+                    min-height: 20px;
+                    background: #F9F9F9;
+                    width: calc(100% - 60px);
+                    margin: 0 30px;
+                    max-height: 200px;
+                    top: 50px;
+                    left: 0px;
+                    position: absolute;
+                    z-index: 9;
+                    overflow-y: auto;
+                    // padding: 10px;
+                    display: none;
+                    // overflow: hidden;
+                    .record-ul {
+                        margin: 10px;
+                        li {
+                            clear: both;
+                            float: left;
+                            padding: 5px 0;
+                            span {
+                                display: block;
+                                letter-spacing: 1px;
+                                font-size: 18px;
+                                font-weight: normal;
+                            }
+                        }
+                    }
+                }
+                .box {
+                    background: #F9F9F9;
+                    width: calc(100% - 60px);
+                    margin: 0 30px;
+                    height: 400px;
+                    position: absolute;
+                    z-index: 9999;
+                    overflow-y: auto;
+                    padding: 10px;
+                    display: none;
+                    li {
+                        background-color: #F1F1F1;
+                        margin: 0 3px 5px 0;
+                        padding: 5px;
+                        font-size: 13px;
+                        cursor: pointer;
+                        &:hover {
+                            background-color: #3c9;
+                        }
+                    }
+                    .clear-both {
+                        clear: both;
+                    }
+                }
+                .box-display {
+                    display: block;
+                }
+            }
+            .btn {
+                height: 40px;
+                width: 80px;
+                margin-top: 20px;
+                margin-left: 30px;
+            }
+            .col-xs-12 {
+                padding: 0px;
+            }
+            .ifo {
+                width: calc(100% - 60px);
+                margin: 0 30px;
+                // background: red;
+                margin-top: 20px;
+                border-top: 1px dashed #cccccc;
+                color: #999;
+                padding: 10px;
+                min-height: 200px;
+                color: black;
+                font-size: 18px;
+            }
+        }
+    }
+    
+    @media (min-width: 768px) {}
+    
+    @media (min-width: 992px) {
+        .content {
+            width: 960px;
+        }
+    }
+    
+    @media (min-width: 1200px) {}
