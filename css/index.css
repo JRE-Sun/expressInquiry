@@ -7,6 +7,14 @@ body {
   background-color: #E9E9E9;
   font-weight: normal !important; }
 
+input[type=number] {
+  -moz-appearance: textfield; }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
 ul,
 li {
   padding: 0;
@@ -48,7 +56,7 @@ li {
       margin-top: 20px; }
       .content .row .company .company-text {
         outline: medium;
-        width: calc(100% - 60px);
+        width: calc(100% - 115px);
         height: 50px;
         margin: 0 30px;
         border: 1px solid #cccccc;
@@ -56,10 +64,13 @@ li {
         text-indent: 1em;
         font-size: 18px; }
       .content .row .company .fa-times {
-        top: 6px;
+        height: 40px;
+        width: 40px;
+        top: 10px;
         right: 90px;
         color: #3c9;
         position: absolute;
+        text-align: center;
         cursor: pointer; }
       .content .row .company .company-icon {
         background-color: #3c9;
@@ -92,6 +103,7 @@ li {
         .content .row .company .record-div .record-ul {
           margin: 10px; }
           .content .row .company .record-div .record-ul li {
+            width: 100%;
             clear: both;
             float: left;
             padding: 5px 0; }

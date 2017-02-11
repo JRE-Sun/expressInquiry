@@ -9,6 +9,23 @@ $(function() {
     var app = "";
     var a = ["s"];
 
+    function IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = ["Android", "iPhone",
+            "SymbianOS", "Windows Phone",
+            "iPad", "iPod"
+        ];
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+            if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
+
+
     $(".fa-times").click(function() {
         $("#companyId").val("");
     });
@@ -27,27 +44,6 @@ $(function() {
         // li[i].innerHTML = "";
         // }
     };
-
-    var records = new Vue({
-        el: '#records',
-        data: {
-            items: []
-        },
-        methods: {
-            loadMore: function(moreData) {
-                this.items.push(moreData);
-                // alert();
-            },
-            toggle: function(index) {
-                // console.info(index);
-                companyName.value = this.items[index].name;
-                companyId.value = this.items[index].id;
-                data[0] = this.items[index].key;
-                data[3] = this.items[index].name;
-                data[1] = this.items[index].id;
-            }
-        }
-    });
     record.onclick = function(e) {
         $(".record-div").toggle();
         e.stopPropagation();
@@ -80,10 +76,47 @@ $(function() {
         companyName.value = $(this)[0].innerHTML;
         $(".box").toggle();
     });
+
+    document.addEventListener('touchend', function(event) {
+        // 如果这个元素的位置内只有一个手指的话
+        if (event.targetTouches.length == 1) {　　　　
+            event.preventDefault(); // 阻止浏览器默认事件，重要 
+            // alert();
+            $(".record-div").hide();
+            $(".box").hide();
+            // e.stopPropagation();
+        }
+    }, false);
+
+
+
+
+    var records = new Vue({
+        el: '#records',
+        data: {
+            items: []
+        },
+        methods: {
+            loadMore: function(moreData) {
+                this.items.push(moreData);
+                // alert();
+            },
+            toggle: function(index) {
+                // console.info(index);
+                companyName.value = this.items[index].name;
+                companyId.value = this.items[index].id;
+                data[0] = this.items[index].key;
+                data[3] = this.items[index].name;
+                data[1] = this.items[index].id;
+            }
+        }
+    });
+
     app = new Vue({
         el: '#app',
         data: {
-            items: []
+            items: [],
+            flag: true
         },
         methods: {
             delete: function() {
@@ -93,6 +126,13 @@ $(function() {
             loadMore: function(moreData) {
                 this.items.push(moreData);
                 console.log("2");
+            },
+            changeFlag: function(flag) {
+                this.flag = flag;
+                console.log(flag);
+            },
+            getFlag: function() {
+                return this.flag;
             }
         }
     });
@@ -108,13 +148,18 @@ $(function() {
                 type: "get",
                 dataType: "json",
                 success: function(json) {
-                    console.log(json.showapi_res_body.data);
-                    for (var i = 0; i < json.showapi_res_body.data.length; i++) {
-                        app.loadMore(json.showapi_res_body.data[i]);
-                        console.log("1");
+                    console.log(json);
+                    // console.log(json.showapi_res_body.showapi_res_error);
+                    // console.log(json.showapi_res_body.data);
+                    app.changeFlag(json.showapi_res_body.flag);
+                    if (json.showapi_res_body.flag) {
+                        for (var i = 0; i < json.showapi_res_body.data.length; i++) {
+                            app.loadMore(json.showapi_res_body.data[i]);
+                            // console.log("1");
+                        }
+                        var myjson = { "key": data[0], "id": data[1], "name": data[3] };
+                        records.loadMore(myjson);
                     }
-                    var myjson = { "key": data[0], "id": data[1], "name": data[3] };
-                    records.loadMore(myjson);
                 }
             });
         }

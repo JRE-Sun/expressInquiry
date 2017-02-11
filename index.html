@@ -159,10 +159,17 @@
                 <div class="col-xs-12 ifo" id="app">
                     查询结果<br/>
                     <ul class="row">
+                        <template v-if="getFlag()">
                         <li class="row col-xs-12" v-for="item in items">
                             <span>{{item.time}}</span> <br>
                             <span>{{item.context}}</span>
                         </li>
+                        </template>
+                        <template v-else>
+                                <li class="row col-xs-12">
+                                    <span>查询失败</span>
+                                </li>
+                        </template>
                     </ul>
                 </div>
             </div>
